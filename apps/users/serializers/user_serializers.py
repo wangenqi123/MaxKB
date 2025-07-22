@@ -95,7 +95,7 @@ class LoginSerializer(ApiMixin, serializers.Serializer):
 
     password = serializers.CharField(required=True, error_messages=ErrMessage.char(_("Password")))
 
-    captcha = serializers.CharField(required=True, error_messages=ErrMessage.char(_("captcha")))
+    # captcha = serializers.CharField(required=True, error_messages=ErrMessage.char(_("captcha")))
 
     def is_valid(self, *, raise_exception=False):
         """
@@ -105,9 +105,9 @@ class LoginSerializer(ApiMixin, serializers.Serializer):
         """
         super().is_valid(raise_exception=True)
         captcha = self.data.get('captcha')
-        captcha_value = captcha_cache.get(f"LOGIN:{captcha.lower()}")
-        if captcha_value is None:
-            raise AppApiException(1005, _("Captcha code error or expiration"))
+        # captcha_value = captcha_cache.get(f"LOGIN:{captcha.lower()}")
+        # if captcha_value is None:
+        #     raise AppApiException(1005, _("Captcha code error or expiration"))
         username = self.data.get("username")
         password = password_encrypt(self.data.get("password"))
         user = QuerySet(User).filter(Q(username=username,
@@ -216,9 +216,9 @@ class RegisterSerializer(ApiMixin, serializers.Serializer):
 
         return True
 
-    @valid_license(model=User, count=2,
+    @valid_license(model=User, count=100,
                    message=_(
-                       "The community version supports up to 2 users. If you need more users, please contact us (https://fit2cloud.com/)."))
+                       "The community version supports up to 100 users. If you need more users, please contact us."))
     @transaction.atomic
     def save(self, **kwargs):
         m = User(
@@ -803,9 +803,9 @@ class UserManageSerializer(serializers.Serializer):
             if self.data.get('password') != self.data.get('re_password'):
                 raise ExceptionCodeConstants.PASSWORD_NOT_EQ_RE_PASSWORD.value.to_app_api_exception()
 
-    @valid_license(model=User, count=2,
+    @valid_license(model=User, count=100,
                    message=_(
-                       'The community version supports up to 2 users. If you need more users, please contact us (https://fit2cloud.com/).'))
+                       'The community version supports up to 100 users. If you need more users, please contact us (https://fit2cloud.com/).'))
     @transaction.atomic
     def save(self, instance, with_valid=True):
         if with_valid:

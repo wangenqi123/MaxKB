@@ -35,7 +35,7 @@
             </el-form-item>
           </div>
           <div class="mb-24">
-            <el-form-item prop="captcha">
+            <!-- <el-form-item prop="captcha">
               <div class="flex-between w-full">
                 <el-input
                   size="large"
@@ -47,7 +47,7 @@
 
                 <img :src="identifyCode" alt="" height="38" class="ml-8 cursor border border-r-4" @click="makeCode" />
               </div>
-            </el-form-item>
+            </el-form-item> -->
           </div>
         </el-form>
 

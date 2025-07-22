@@ -148,8 +148,8 @@ const submitValid = (formEl: FormInstance | undefined) => {
     common
       .asyncGetValid(ValidType.Application, ValidCount.Application, loading)
       .then(async (res: any) => {
+        submitHandle(formEl)
         if (res?.data) {
-          submitHandle(formEl)
         } else {
           MsgAlert(t('common.tip'), t('views.application.tip.professionalMessage'))
         }
