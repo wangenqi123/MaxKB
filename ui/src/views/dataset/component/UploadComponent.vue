@@ -1,18 +1,12 @@
 <template>
   <h4 class="title-decoration-1 mb-8">{{ $t('views.document.uploadDocument') }}</h4>
-  <el-form
-    ref="FormRef"
-    :model="form"
-    :rules="rules"
-    label-position="top"
-    require-asterisk-position="right"
-  >
+  <el-form ref="FormRef" :model="form" :rules="rules" label-position="top" require-asterisk-position="right">
     <div class="mt-16 mb-16">
       <el-radio-group v-model="form.fileType" @change="radioChange" class="app-radio-button-group">
         <el-radio-button value="txt">{{ $t('views.document.fileType.txt.label') }}</el-radio-button>
         <el-radio-button value="table">{{
           $t('views.document.fileType.table.label')
-        }}</el-radio-button>
+          }}</el-radio-button>
         <el-radio-button value="QA">{{ $t('views.document.fileType.QA.label') }}</el-radio-button>
       </el-radio-group>
     </div>
@@ -38,21 +32,9 @@
           <p>{{ $t('views.document.fileType.QA.tip3') }}</p>
         </div>
       </div>
-      <el-upload
-        :webkitdirectory="false"
-        class="w-full mb-4"
-        drag
-        multiple
-        v-model:file-list="form.fileList"
-        action="#"
-        :auto-upload="false"
-        :show-file-list="false"
-        accept=".xlsx, .xls, .csv,.zip"
-        :limit="50"
-        :on-exceed="onExceed"
-        :on-change="fileHandleChange"
-        @click.prevent="handlePreview(false)"
-      >
+      <el-upload :webkitdirectory="false" class="w-full mb-4" drag multiple v-model:file-list="form.fileList" action="#"
+        :auto-upload="false" :show-file-list="false" accept=".xlsx, .xls, .csv,.zip" :limit="50" :on-exceed="onExceed"
+        :on-change="fileHandleChange" @click.prevent="handlePreview(false)">
         <img src="@/assets/upload-icon.svg" alt="" />
         <div class="el-upload__text">
           <p>
@@ -92,21 +74,9 @@
           <p>{{ $t('views.document.fileType.table.tip4') }}</p>
         </div>
       </div>
-      <el-upload
-        :webkitdirectory="false"
-        class="w-full mb-4"
-        drag
-        multiple
-        v-model:file-list="form.fileList"
-        action="#"
-        :auto-upload="false"
-        :show-file-list="false"
-        accept=".xlsx, .xls, .csv"
-        :limit="50"
-        :on-exceed="onExceed"
-        :on-change="fileHandleChange"
-        @click.prevent="handlePreview(false)"
-      >
+      <el-upload :webkitdirectory="false" class="w-full mb-4" drag multiple v-model:file-list="form.fileList" action="#"
+        :auto-upload="false" :show-file-list="false" accept=".xlsx, .xls, .csv" :limit="50" :on-exceed="onExceed"
+        :on-change="fileHandleChange" @click.prevent="handlePreview(false)">
         <img src="@/assets/upload-icon.svg" alt="" />
         <div class="el-upload__text">
           <p>
@@ -134,21 +104,9 @@
           <p>{{ $t('views.document.fileType.txt.tip2') }}</p>
         </div>
       </div>
-      <el-upload
-        :webkitdirectory="false"
-        class="w-full"
-        drag
-        multiple
-        v-model:file-list="form.fileList"
-        action="#"
-        :auto-upload="false"
-        :show-file-list="false"
-        accept=".txt, .md, .log, .docx, .pdf, .html,.zip,.xlsx,.xls,.csv"
-        :limit="50"
-        :on-exceed="onExceed"
-        :on-change="fileHandleChange"
-        @click.prevent="handlePreview(false)"
-      >
+      <el-upload :webkitdirectory="false" class="w-full" drag multiple v-model:file-list="form.fileList" action="#"
+        :auto-upload="false" :show-file-list="false" accept=".txt, .md, .log, .docx, .pdf, .html, .zip, .xlsx, .xls, .csv, .png, .jpg, .jpeg"
+        :limit="50" :on-exceed="onExceed" :on-change="fileHandleChange" @click.prevent="handlePreview(false)">
         <img src="@/assets/upload-icon.svg" alt="" />
         <div class="el-upload__text">
           <p>
@@ -164,7 +122,7 @@
             <p>
               {{
                 $t('views.document.upload.formats')
-              }}TXT、Markdown、PDF、DOCX、HTML、XLS、XLSX、CSV、ZIP
+              }}TXT、Markdown、PDF、DOCX、HTML、XLS、XLSX、CSV、ZIP、PNG、JPG、JPEG
             </p>
           </div>
         </div>
@@ -182,11 +140,13 @@
                 <p>{{ item && item?.name }}</p>
                 <el-text type="info" size="small">{{
                   filesize(item && item?.size) || '0K'
-                }}</el-text>
+                  }}</el-text>
               </div>
             </div>
             <el-button text @click="deleteFile(index)">
-              <el-icon><Delete /></el-icon>
+              <el-icon>
+                <Delete />
+              </el-icon>
             </el-button>
           </div>
         </el-card>
@@ -318,10 +278,10 @@ defineExpose({
   line-height: 20px;
   color: var(--el-text-color-secondary);
 }
+
 .el-upload__text {
   .hover:hover {
     color: var(--el-color-primary-light-5);
   }
 }
-
 </style>

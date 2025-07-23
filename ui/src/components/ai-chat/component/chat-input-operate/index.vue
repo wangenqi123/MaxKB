@@ -350,7 +350,7 @@ const localLoading = computed({
 const upload = ref()
 
 const imageExtensions = ['JPG', 'JPEG', 'PNG', 'GIF', 'BMP']
-const documentExtensions = ['PDF', 'DOCX', 'TXT', 'XLS', 'XLSX', 'MD', 'HTML', 'CSV']
+const documentExtensions = ['PDF', 'DOCX', 'TXT', 'XLS', 'XLSX', 'MD', 'HTML', 'CSV', 'PNG', 'JPG', 'JPEG']
 const videoExtensions: any = []
 const audioExtensions = ['MP3', 'WAV', 'OGG', 'AAC', 'M4A']
 let otherExtensions = ['PPT', 'DOC']
